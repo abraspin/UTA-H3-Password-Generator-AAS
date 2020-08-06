@@ -1,6 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var hasSelectedType; //This boolean tracks whether the user has not selected any character types
+//good to set this to false here, in case the program is run twice in a row.
+var hasSelectedType = false; //This boolean tracks whether the user has not selected any character types
 
 // Declaration of character arrays for RNG to choose from.
 var upperCharArray = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(  "");
@@ -57,6 +58,8 @@ console.log("Number.isInteger(parseInt(passwordLength))---" + Number.isInteger(p
 passwordLength = parseInt(passwordLength);
 console.log("line 58 passwordLength----" +passwordLength)
 //this peculiar conditional parses the user input to an int. If it is passed a NaN or empty string it will be false...I think
+//Also if the user enters a decimal that is within range it will be rounded down 
+//password length error checking -----  string, special char, empty, cancel, out of range
   if (parseInt(passwordLength) &&
   passwordLength >= 8 && 
   passwordLength <= 128) {
@@ -108,11 +111,11 @@ console.log("line 58 passwordLength----" +passwordLength)
     // }
 
 alert("You have made the following selections: " +
-"\nPassword Length--------" + passwordLength +
-"\nUpper Case Characters--" + useUpperCase +
-"\nLower Case Character---" + useLowerCase +
-"\nNumerical Characters---" + useNumericChars +
-"\nSpecial Characters-----" + useSpecialChars);
+"\nPassword Length----------" + passwordLength +
+"\nUpper Case Characters----" + useUpperCase +
+"\nLower Case Character-----" + useLowerCase +
+"\nNumerical Characters-----" + useNumericChars +
+"\nSpecial Characters--------" + useSpecialChars);
     // If no character types have been selected, it will exit the program here and return an empty string
     //The boolean check will be set to true if any of the 4 char types are selected.
     if (hasSelectedType) {
@@ -120,9 +123,14 @@ alert("You have made the following selections: " +
       //spit out and append a random character from the master pool (random category of the types selected by the user)
       for (var i = 0; i < passwordLength; i++) {
         newPassword += charPool[Math.floor(Math.random() * charPool.length)];
-        console.log(Math.floor(Math.random() * charPool.length))
-       console.log(newPassword)
       }
+      ///this must be set back to false, 
+      ///because it is global to the page 
+      ///if the program runs succesfully once, 
+      // it will retain true value and run this conditional
+      // -->Resetting charPool is probably unnecessary. 
+      hasSelectedType = false;
+      charPool = [];
       return newPassword;
 
     } else if (!hasSelectedType) {
@@ -136,6 +144,7 @@ alert("You have made the following selections: " +
        "\n\nThis program will now end. \n\nPlease click the 'Generate Password' button to try again."
     );
   }
+ console.log("hasSelectedType at the end line 145:---" +hasSelectedType)
 }
 
 // Write password to the #password input
@@ -150,8 +159,8 @@ function writePassword() {
 
   console.log("typeof password: "+typeof password)
   console.log("password: "+ password)
-  // if (!password) {passwordText.value="YOUR PASSWORD WAS NOT GENERATED." +
-  // "\nPLEASE DOUBLE CHECK YOUR INPUTS AND TRY AGAIN."} else
+  if (!password) {passwordText.value="YOUR PASSWORD WAS NOT GENERATED." +
+  "\nPLEASE DOUBLE CHECK YOUR INPUTS AND TRY AGAIN."} else
   passwordText.value = password;
 }
 
