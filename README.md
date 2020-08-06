@@ -6,7 +6,7 @@ JavaScript, HTML and CSS for UTA Bootcamp Homework-03 JavaScript: Password Gener
 ---
 
 ## Assignment
->Stronger passwords means better security. It can b useful 
+>Stronger passwords mean better security. It can b useful 
 >to generate a random password that is very difficult for a 
 >human or computer to guess.
 
