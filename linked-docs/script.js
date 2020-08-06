@@ -157,7 +157,6 @@ function writePassword() {
   //become the word "undefined" on-screen if something goes awry in the prompts. 
   //This works because it would then be passed a falsy value of NaN or undefined or "". Nifty!
 
-  console.log("typeof password: "+typeof password)
   console.log("password: "+ password)
   if (!password) {passwordText.value="YOUR PASSWORD WAS NOT GENERATED." +
   "\nPLEASE DOUBLE CHECK YOUR INPUTS AND TRY AGAIN."} else
