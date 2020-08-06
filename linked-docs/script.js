@@ -16,7 +16,26 @@ var specialCharArray = "!#$%&'()*+,-.:;<=>?@[]^_`{|}~".split("");
 console.log(specialCharArray);
 var charPool = [];
 
+// my extremely lazy function to post charPool to console
+function logCharPool() {
+  console.log("carpool array", charPool);
+}
+
+// my function, checks if the user wants a type of character included in
+//their password and if they do, it appends that character
+// type's pool array on to the master charPool
+function pushCharArray(wantsIncluded, charArray) {
+  if (wantsIncluded.toLowerCase() === "yes") {
+    charPool.push(charArray);
+    console.log("carpool array: " + charPool);
+  }
+}
+
+////////////////////////////////////////////////////////////////////////
+
+///I think the actual calling of this function ...needs this function to return the completed password.
 function generatePassword() {
+  var newPassword;
   var passwordLength = prompt(
     "What length would you like your new password to be? (Please choose a value between 1 and 128)"
   );
@@ -28,33 +47,34 @@ function generatePassword() {
     alert(
       "The next few prompts will ask about the special characters you want to be present in your new passwords."
     );
+
     var useUpperCase = prompt(
       "Would you like your new passsword to include \r\nCapitalized Letters? \r\nType 'yes' or 'no'"
     );
-    if (useUpperCase.toLowerCase === "yes") {
-      charPool.push(upperCharArray);
-      console.log(charPool);
-    }
+
+    pushCharArray(useUpperCase, upperCharArray);
     var useLowerCase = prompt(
       "Would you like your new passsword to include \r\nLowercase Letters? \r\nType 'yes' or 'no'"
     );
+    pushCharArray(useLowerCase, lowerCharArray);
 
-    if (useLowerCase.toLowerCase === "yes") {
-      charPool.push(lowerCharArray);
-      console.log(charPool);
-    }
     var useNumericChars = prompt(
       "Would you like your new passsword to include \r\nNumeric Characters? \r\nType 'yes' or 'no'"
     );
-    if (useNumericChars.toLowerCase === "yes") {
-      charPool.push(numericalCharArray);
-      console.log(charPool);
-    }
+    pushCharArray(useNumericChars, numericalCharArray);
+
     var useSpecialChars = prompt(
       "Would you like your new passsword to include \r\nSpecial Character? \r\nType 'yes' or 'no'"
     );
+    pushCharArray(useSpecialChars, specialCharArray);
+    console.log(
+      "each answer: " + useLowerCase,
+      useUpperCase,
+      useSpecialChars,
+      useNumericChars
+    );
 
-    console.log(useLowerCase, useUpperCase, useSpecialChars, useNumericChars);
+    //maybe I can jut check to see if charPool is empty idk
     // wait is this necessary? (later: uh yes i think) can I just reroute all the conditionals to the final else for invalid entry?
     // If no types have been selected, it will exit the program here. the only way for this conditional to be true is if all 4 are empty (or null?)
     if (
@@ -64,6 +84,11 @@ function generatePassword() {
       useSpecialChars != ""
     ) {
       // loop through as many times as the user wants their password length to be, and spit out a random character from a random category
+
+      for(var i = 0; i<passwordLength; i++){
+
+      }
+
     } else {
       alert(
         "Invalid Entry. Please select at least one character type. This program will now end. Please click the 'Generate Password' button to try again."
