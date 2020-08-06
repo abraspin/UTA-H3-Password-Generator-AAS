@@ -27,17 +27,27 @@ function logCharPool() {
 // type's pool array on to the master charPool
 function pushCharArray(wantsIncluded, charArray) {
   if (wantsIncluded.toLowerCase() === "yes") {
-    charPool.push(charArray);
-    console.log("carpool array: " + charPool);
+
+    
+    for (var i = 0; i<charArray.length; i++){
+      charPool.push(charArray[i]);
+    }
     hasSelectedType = true;
   }
 }
+
+//not that smart actually thi is just to fix the mess up above.
+// Ok I'm definitely a genius, this function loops through 
+//the chosen char type array and adds each element one by 
+//one to the charPool. I wish there was a way to concatenate 
+//entire arrays but the interne seemed iffy on this.
+
 
 ////////////////////////////////////////////////////////////////////////
 
 ///I think the actual calling of this function ...needs this function to return the completed password.
 function generatePassword() {
-  var newPassword;
+  var newPassword = "";
   var passwordLength = prompt(
     "What length would you like your new password to be? (Please choose a value between 1 and 128)"
   );
@@ -85,19 +95,13 @@ function generatePassword() {
     //maybe I can jut check to see if charPool is empty idk
     // wait is this necessary? (later: uh yes i think) can I just reroute all the conditionals to the final else for invalid entry?
     // If no types have been selected, it will exit the program here. the only way for this conditional to be true is if all 4 are empty (or null?)
-    if (
-      useUpperCase != "" &&
-      useLowerCase != "" &&
-      useNumericChars != "" &&
-      useSpecialChars != ""
-    ) {
+    if (hasSelectedType) {
       // loop through as many times as the user wants their password length to be, and spit out a random character from a random category
-
       for (var i = 0; i < passwordLength; i++) {
-        newPassword += Math.floor(math.random() * charPool.length);
+        newPassword += charPool[Math.floor(Math.random() * charPool.length)];
       }
-      console.log(newPassword);
-    } else if (!hasSelectedType){
+      console.log("new password is: "+newPassword);
+    } else if (!hasSelectedType) {
       alert(
         "Invalid Entry. Please select at least one character type. This program will now end. Please click the 'Generate Password' button to try again."
       );
