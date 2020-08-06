@@ -101,6 +101,8 @@ function generatePassword() {
         newPassword += charPool[Math.floor(Math.random() * charPool.length)];
       }
       console.log("new password is: "+newPassword);
+
+      return newPassword;
     } else if (!hasSelectedType) {
       alert(
         "Invalid Entry. Please select at least one character type. This program will now end. Please click the 'Generate Password' button to try again."
@@ -126,5 +128,5 @@ function writePassword() {
 // *************************THE GENERATE BUTTON WILL NOT WORK UNTIL YOU UNCOMMENT 4 LINES DOWN
 //The comment below is the correct code that came with the assignment, 2 below is my tester for the generatePassword() function
 // the generateBtn var is declared at the top, it's assigned to the #generate button element
-// generateBtn.addEventListener("click", writePassword);
-generateBtn.addEventListener("click", generatePassword());
+generateBtn.addEventListener("click", writePassword);
+// generateBtn.addEventListener("click", generatePassword());
