@@ -69,7 +69,7 @@ console.log("line 58 passwordLength----" +passwordLength)
 
 //Ask user if they want Capitalized Letters included in their new password
     var useUpperCase = prompt(
-      "Would you like your new passsword to include \r\nCapitalized Letters? \r\nType 'yes' or 'no'"    );
+      "Would you like your new passsword to include: \n\n   Capitalized Letters? \n\nType 'yes' or 'no'"    );
     pushCharArray(useUpperCase, upperCharArray);
 
 
@@ -77,7 +77,7 @@ console.log("line 58 passwordLength----" +passwordLength)
 //Ask user if they want Lower case Letters included in their new password
 ///////EXPERIMENTAL ERROR HANDLING FOR INDIVIDUAL CHAR TYPE PROMPT
     var useLowerCase = prompt(
-      "Would you like your new passsword to include \r\nLowercase Letters? \r\nType 'yes' or 'no'"    );
+      "Would you like your new passsword to include: \n\n   Lowercase Letters? \n\nType 'yes' or 'no'"    );
     // if (useLowerCase.toLowerCase() === "yes") {
       pushCharArray(useLowerCase, lowerCharArray);
     // }
@@ -89,7 +89,7 @@ console.log("line 58 passwordLength----" +passwordLength)
     
 //Ask user if they want Numeric Characters included in their new password
     var useNumericChars = prompt(
-      "Would you like your new passsword to include \r\nNumeric Characters? \r\nType 'yes' or 'no'"    );
+      "Would you like your new passsword to include: \n\n   Numeric Characters? \n\nType 'yes' or 'no'"    );
     // if (useNumericChars.toLowerCase() === "yes") {
       pushCharArray(useNumericChars, numericalCharArray);
     // }
@@ -101,7 +101,7 @@ console.log("line 58 passwordLength----" +passwordLength)
 
 //Ask user if they want Special  Characters included in their new password
     var useSpecialChars = prompt(
-      "Would you like your new passsword to include \r\nSpecial Character? \r\nType 'yes' or 'no'"    );
+      "Would you like your new passsword to include: \n\n   Special Character? \n\nType 'yes' or 'no'"    );
     // if (useSpecialChars.toLowerCase() === "yes") {
       pushCharArray(useSpecialChars, specialCharArray);
     // }
