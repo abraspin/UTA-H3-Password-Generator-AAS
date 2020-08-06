@@ -20,7 +20,7 @@ function generatePassword() {
   var passwordLength = prompt(
     "What length would you like your new password to be? (Please choose a value between 1 and 128)"
   );
-  console.log(passwordLength);
+  console.log("password length: " + passwordLength);
 
   if (passwordLength > 1 && passwordLength < 128) {
     // Will add error handling later, nest each in an if statement checking for correct input
@@ -34,21 +34,29 @@ function generatePassword() {
     if (useUpperCase.toLowerCase === "yes") {
       charPool.push(upperCharArray);
       console.log(charPool);
-      // placeholder
-    } else if (X) {
-    } else
-      var useLowerCase = prompt(
-        "Would you like your new passsword to include \r\nLowercase Letters? \r\nType 'yes' or 'no'"
-      );
+    }
+    var useLowerCase = prompt(
+      "Would you like your new passsword to include \r\nLowercase Letters? \r\nType 'yes' or 'no'"
+    );
+
+    if (useLowerCase.toLowerCase === "yes") {
+      charPool.push(lowerCharArray);
+      console.log(charPool);
+    }
     var useNumericChars = prompt(
       "Would you like your new passsword to include \r\nNumeric Characters? \r\nType 'yes' or 'no'"
     );
+    if (useNumericChars.toLowerCase === "yes") {
+      charPool.push(numericalCharArray);
+      console.log(charPool);
+    }
     var useSpecialChars = prompt(
       "Would you like your new passsword to include \r\nSpecial Character? \r\nType 'yes' or 'no'"
     );
 
     console.log(useLowerCase, useUpperCase, useSpecialChars, useNumericChars);
-    // Checking to make sure at least one type of character has been selected
+    // wait is this necessary? (later: uh yes i think) can I just reroute all the conditionals to the final else for invalid entry?
+    // If no types have been selected, it will exit the program here. the only way for this conditional to be true is if all 4 are empty (or null?)
     if (
       useUpperCase != "" &&
       useLowerCase != "" &&
