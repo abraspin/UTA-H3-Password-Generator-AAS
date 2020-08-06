@@ -1,5 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var hasSelectedType; //This boolean tracks whether the user has not selected any character types
 
 // Declaration of character arrays for RNG to choose from.
 var upperCharArray = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z".split(
@@ -28,6 +29,7 @@ function pushCharArray(wantsIncluded, charArray) {
   if (wantsIncluded.toLowerCase() === "yes") {
     charPool.push(charArray);
     console.log("carpool array: " + charPool);
+    hasSelectedType = true;
   }
 }
 
@@ -53,20 +55,26 @@ function generatePassword() {
     );
 
     pushCharArray(useUpperCase, upperCharArray);
+
     var useLowerCase = prompt(
       "Would you like your new passsword to include \r\nLowercase Letters? \r\nType 'yes' or 'no'"
     );
-    pushCharArray(useLowerCase, lowerCharArray);
-
+    if (useLowerCase.toLowerCase() === "yes") {
+      pushCharArray(useLowerCase, lowerCharArray);
+    }
     var useNumericChars = prompt(
       "Would you like your new passsword to include \r\nNumeric Characters? \r\nType 'yes' or 'no'"
     );
-    pushCharArray(useNumericChars, numericalCharArray);
-
+    if (useNumericChars.toLowerCase() === "yes") {
+      pushCharArray(useNumericChars, numericalCharArray);
+    }
     var useSpecialChars = prompt(
       "Would you like your new passsword to include \r\nSpecial Character? \r\nType 'yes' or 'no'"
     );
-    pushCharArray(useSpecialChars, specialCharArray);
+    if (useSpecialChars.toLowerCase() === "yes") {
+      pushCharArray(useSpecialChars, specialCharArray);
+    }
+
     console.log(
       "each answer: " + useLowerCase,
       useUpperCase,
@@ -85,11 +93,11 @@ function generatePassword() {
     ) {
       // loop through as many times as the user wants their password length to be, and spit out a random character from a random category
 
-      for(var i = 0; i<passwordLength; i++){
-
+      for (var i = 0; i < passwordLength; i++) {
+        newPassword += Math.floor(math.random() * charPool.length);
       }
-
-    } else {
+      console.log(newPassword);
+    } else if (!hasSelectedType){
       alert(
         "Invalid Entry. Please select at least one character type. This program will now end. Please click the 'Generate Password' button to try again."
       );
