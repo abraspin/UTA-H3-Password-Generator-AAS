@@ -19,7 +19,7 @@ Error checking is a critical component of any interactive application. This appl
 
 ## Contents
 **Files include:**
-* Index file containing web page contents
+* Index file containing HTML web page contents
 * Script file conaining JavaScript
 * Style Sheet containing CSS code
 * This README file
